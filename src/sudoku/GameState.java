@@ -2,44 +2,43 @@ package sudoku;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameState
 {
-	private InternalBoard solution;
-	private Board gameboard;
-	private boolean[][] emphasis;
+	private int[][] solution;
+	private Cell[][] gameBoard;
+	private ArrayList<Change> history;
 	
-	public GameState()
+	public GameState(int[][] newSolution)
 	{
-		solution = new InternalBoard();
-		gameboard = new Board();
-		emphasis = new boolean[9][9];
+		solution = newSolution;
 	}
 	
-	public boolean[][] getEmphasis()
+	public void setGameBoard(Cell[][] newGameBoard)
 	{
-		return emphasis;
+		gameBoard = newGameBoard;
 	}
 	
-	public void setEmphasis(boolean[][] new_emphasis)
+	public Cell[][] getGameBoard()
 	{
-		emphasis = new_emphasis;
+		return gameBoard;
 	}
 	
-	public void setBoards(InternalBoard new_solution, Board new_gameboard)
-	{
-		solution = new_solution;
-		gameboard = new_gameboard;
-	}
-	
-	public InternalBoard getSolution()
+	public int[][] getSolution()
 	{
 		return solution;
 	}
 	
-	public Board getGameboard()
+	public void undo()
 	{
-		return gameboard;
+		// stub
+	}
+	
+	public void redo()
+	{
+		// stub
 	}
 	
 	public void save(File f) throws IOException
